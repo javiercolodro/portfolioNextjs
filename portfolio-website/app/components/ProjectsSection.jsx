@@ -10,7 +10,7 @@ const projectsData = [
     title: "TMDB",
     description:
       "The Movie Database is an app where you can see the latest films and series currently airing, as well as upcoming movies and series. Customers can register and easily store their favorite shows.",
-    image: "/images/projects/tmdbImage.png",
+    image: "/images/projects/tmdb.png",
     tag: ["All", "Web"],
     gitUrl: "https://github.com/Javierdigital85/tmdb/tree/main/src",
     previewUrl: "https://github.com/Javierdigital85/tmdb/tree/main/api",
