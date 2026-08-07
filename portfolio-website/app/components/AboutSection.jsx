@@ -38,13 +38,21 @@ const SKILLS_DATA = [
   { name: "DynamoDB", category: "AWS" },
   { name: "AWS Cognito", category: "AWS" },
   { name: "AWS Amplify", category: "AWS" },
+  { name: "S3", category: "AWS" },
+  { name: "CloudFront", category: "AWS" },
   { name: "SNS", category: "AWS" },
+  { name: "SQS", category: "AWS" },
+  { name: "Step Functions", category: "AWS" },
+  { name: "EventBridge", category: "AWS" },
+  { name: "Amazon Bedrock", category: "AWS" },
+  { name: "Secrets Manager", category: "AWS" },
   { name: "CloudWatch", category: "AWS" },
   { name: "IAM", category: "AWS" },
   { name: "GitHub", category: "Tools" },
   { name: "Postman", category: "Tools" },
   { name: "Thunder Client", category: "Tools" },
   { name: "AWS Toolkit", category: "Tools" },
+  { name: "Kiro", category: "Tools" },
 ];
 
 const CATEGORY_CONFIG = {
@@ -130,15 +138,17 @@ const AboutSection = () => (
         <SectionTitle>Skills</SectionTitle>
         <div className="space-y-3 bg-[#181818] border border-[#2a2a2a] rounded-2xl p-6">
           {CATEGORY_ORDER.map((cat) => (
-            <div key={cat} className="flex items-center gap-3 flex-wrap">
-              <span className={`text-xs font-bold w-20 text-center shrink-0 ${CATEGORY_CONFIG[cat].label}`}>
+            <div key={cat} className="flex items-start gap-3">
+              <span className={`text-xs font-bold w-20 text-center shrink-0 pt-1 ${CATEGORY_CONFIG[cat].label}`}>
                 {cat}
               </span>
-              {SKILLS_DATA.filter((s) => s.category === cat).map((skill, i) => (
-                <span key={i} className={`text-xs px-3 py-1 rounded-full border ${CATEGORY_CONFIG[cat].badge}`}>
-                  {skill.name}
-                </span>
-              ))}
+              <div className="flex flex-wrap gap-2">
+                {SKILLS_DATA.filter((s) => s.category === cat).map((skill, i) => (
+                  <span key={i} className={`text-xs px-3 py-1 rounded-full border ${CATEGORY_CONFIG[cat].badge}`}>
+                    {skill.name}
+                  </span>
+                ))}
+              </div>
             </div>
           ))}
         </div>
