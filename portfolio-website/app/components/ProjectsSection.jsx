@@ -1,8 +1,7 @@
 "use client";
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import ProjectsCard from "./ProjectsCard";
 import ProjectTag from "./ProjectTag";
-import { motion, useInView } from "framer-motion";
 //ACA TENEMOS QUE AGREGAR LAS RUTAS HACIA EL GITHUB DE CADA PROYECTO Y AL SITIO
 const projectsData = [
   {
@@ -123,9 +122,8 @@ const projectsData = [
     gitUrl: "https://github.dev/Javierdigital85/Frontend-ecommerce",
     previewUrl: "https://github.dev/Javierdigital85/Backend-ecommerce",
     web: "https://frontend-ecommerce-h7j0.onrender.com",
-    inDevelopment: false,
   },
-    {
+  {
     id: 10,
     title: "Pizzeria AWS CDK",
     description:
@@ -138,8 +136,21 @@ const projectsData = [
   },
   {
     id: 11,
+    title: "Destination AI - Step Functions Orchestration",
+    description:
+      "A serverless AWS CDK project (TypeScript) that automates destination creation for a travel platform using AI workflows orchestrated with Step Functions. An admin uploads an image and an EXPRESS state machine calls OpenAI via a native HTTP Task to autocomplete the form fields for human review. Once confirmed, a fire-and-forget STANDARD machine uses Amazon Bedrock (Claude Haiku) to write a promotional email and sends it to subscribers via SNS. It relies on direct SDK integrations with Retry/Catch (no glue Lambdas), API Gateway secured with an API key, and CloudWatch dashboards, deployed via GitHub Actions with OIDC.",
+    image: "/images/projects/diagrama-workflows.png",
+    tag: ["All", "AWS Serverless"],
+    gitUrl: "",
+    previewUrl: "https://github.com/javiercolodro/stepfunctions-destination-ai",
+    web: "",
+  },
+  {
+    id: 12,
     title: "Travel World",
     description:
+
+    
       "This is a fullstack travel e-commerce application built with React, AWS CDK, and serverless technologies. It features user authentication with Cognito, product and booking management, a personalized travel experience, shopping cart functionality, and a modern, responsive design.",
     image: "/images/projects/travelWorldPicture.png",
     tag: ["All", "Web", "Mobile", "AWS Serverless"],
@@ -148,13 +159,10 @@ const projectsData = [
     web: "",
     inDevelopment: true,
   },
-
 ];
 
 const ProjectsSection = () => {
   const [tag, setTag] = useState("All");
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
 
   const handleTagChange = (newTag) => {
     setTag(newTag);
@@ -163,11 +171,6 @@ const ProjectsSection = () => {
   const filteredProjects = projectsData.filter((project) =>
     project.tag.includes(tag),
   );
-
-  const cardVariants = {
-    initial: { y: 50, opacity: 0 },
-    animate: { y: 0, opacity: 1 },
-  };
 
   return (
     <section className="py-6">
@@ -205,17 +208,10 @@ const ProjectsSection = () => {
         />
       </div>
       <ul
-        ref={ref}
         className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4"
       >
         {filteredProjects.map((project, index) => (
-          <motion.li
-            key={index}
-            variants={cardVariants}
-            initial="initial"
-            animate={isInView ? "animate" : "initial"}
-            transition={{ duration: 0.3, delay: index * 0.4 }}
-          >
+          <li key={index}>
             <ProjectsCard
               key={project.id}
               imgUrl={project.image}
@@ -227,7 +223,7 @@ const ProjectsSection = () => {
               inDevelopment={project.inDevelopment}
               tag={project.tag}
             />
-          </motion.li>
+          </li>
         ))}
       </ul>
     </section>
