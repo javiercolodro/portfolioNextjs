@@ -1,3 +1,64 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  /* Compensa la navbar fija al navegar con anclas (#about, #projects...) */
+  :target {
+    scroll-margin-top: 6rem;
+  }
+
+  html {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Foco visible y consistente para navegación por teclado (accesibilidad) */
+  :focus-visible {
+    outline: 2px solid theme("colors.accent.DEFAULT");
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: theme("colors.base");
+  }
+  ::-webkit-scrollbar-thumb {
+    background: theme("colors.hairline");
+    border-radius: 9999px;
+    border: 2px solid theme("colors.base");
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #3f3f46;
+  }
+}
+
+@layer components {
+  /* Tarjeta base del tema oscuro */
+  .card {
+    @apply bg-elevated border border-hairline rounded-2xl;
+  }
+
+  /* Degradado de texto para los acentos del hero */
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-accent-soft via-accent to-indigo-400;
+  }
+}
+
+/* Respeta la preferencia del sistema de reducir movimiento */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

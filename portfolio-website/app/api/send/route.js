@@ -1,38 +1,55 @@
-require("dotenv").config({
-  path: `.env.local`,
-});
-
 import { Resend } from "resend";
 
-const apiKey = process.env.RESEND_API_KEY;
-const fromEmail = process.env.FROM_EMAIL;
+const resend = new Resend(process.env.RESEND_API_KEY);
+const toEmail = process.env.FROM_EMAIL;
 
-const resend = new Resend(apiKey);
-
-export async function POST(req, res) {
+export async function POST(req) {
   try {
-    const body = await req.json();
-    const { email, subject, message } = body;
-    console.log(email, subject, message);
-    const data = await resend.emails.send({
-      from: "Contact Form <onboarding@resend.dev>",
-      to: fromEmail,
-      subject: subject,
+    const { email, subject, message } = await req.json();
+
+    // Validación en el servidor: no confiar solo en la del cliente
+    if (!email || !subject || !message) {
+      return Response.json(
+        { error: "email, subject and message are required" },
+        { status: 400 },
+      );
+    }
+
+    if (!process.env.RESEND_API_KEY || !toEmail) {
+      return Response.json(
+        { error: "Email service is not configured" },
+        { status: 500 },
+      );
+    }
+
+    const { data, error } = await resend.emails.send({
+      from: "Portfolio Contact <onboarding@resend.dev>",
+      to: toEmail,
+      subject: `[Portfolio] ${subject}`,
       reply_to: email,
       react: (
         <>
           <h1>{subject}</h1>
-          <p>Thank you for contact me!</p>
+          <p>
+            From: <strong>{email}</strong>
+          </p>
           <p>{message}</p>
         </>
       ),
     });
+
+    // Antes esta rama usaba una variable `error` que no existía, así que
+    // lanzaba un ReferenceError y el catch devolvía 200 igual: el formulario
+    // mostraba "enviado" incluso cuando el envío fallaba.
     if (error) {
-      return Response.json({ error });
+      return Response.json({ error: error.message }, { status: 502 });
     }
-    console.log(data);
-    return Response.json(data);
-  } catch (error) {
-    return Response.json({ error });
+
+    return Response.json({ data }, { status: 200 });
+  } catch (err) {
+    return Response.json(
+      { error: err?.message ?? "Unexpected error" },
+      { status: 500 },
+    );
   }
 }

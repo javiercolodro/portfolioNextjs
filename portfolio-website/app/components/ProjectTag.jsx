@@ -1,15 +1,27 @@
 import React from "react";
 
-const ProjectTag = ({ name, onClick, isSelected }) => {
-  const buttonStyles = isSelected
-    ? "text-white border-blue-600"
-    : "text-[#ADB7BE] border-slate-600 hover:border-white ";
+const ProjectTag = ({ name, onClick, isSelected, count }) => {
   return (
     <button
-      className={`${buttonStyles} rounded-full border-2 px-6 py-3 text-xl cursor-pointer"`}
+      type="button"
+      aria-pressed={isSelected}
       onClick={() => onClick(name)}
+      className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium transition-all duration-200 ${
+        isSelected
+          ? "border-accent bg-accent/15 text-white"
+          : "border-hairline text-muted hover:border-muted hover:text-white"
+      }`}
     >
       {name}
+      {typeof count === "number" && (
+        <span
+          className={`font-mono text-xs ${
+            isSelected ? "text-accent-soft" : "text-slate-500"
+          }`}
+        >
+          {count}
+        </span>
+      )}
     </button>
   );
 };

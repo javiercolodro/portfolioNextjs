@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import ProjectsCard from "./ProjectsCard";
 import ProjectTag from "./ProjectTag";
+import SectionHeading from "./SectionHeading";
 //ACA TENEMOS QUE AGREGAR LAS RUTAS HACIA EL GITHUB DE CADA PROYECTO Y AL SITIO
 const projectsData = [
   {
@@ -11,8 +12,8 @@ const projectsData = [
       "The Movie Database is an app where you can see the latest films and series currently airing, as well as upcoming movies and series. Customers can register and easily store their favorite shows.",
     image: "/images/projects/tmdb.png",
     tag: ["All", "Web"],
-    gitUrl: "https://github.com/Javierdigital85/tmdb/tree/main/src",
-    previewUrl: "https://github.com/Javierdigital85/tmdb/tree/main/api",
+    gitUrl: "https://github.com/javiercolodro/tmdb/tree/main/src",
+    previewUrl: "https://github.com/javiercolodro/tmdb/tree/main/api",
     web: "https://tmdb-app-gfkr.onrender.com/",
   },
   {
@@ -25,7 +26,7 @@ const projectsData = [
     tag: ["All", "Web"],
     gitUrl:
       "https://github.com/hernanortiz18/houseOfDev-src/tree/develop/Front",
-    previewUrl: "https://github.com/Javierdigital85/houseOfDev",
+    previewUrl: "https://github.com/javiercolodro/houseOfDev",
     web: "",
   },
   {
@@ -46,9 +47,9 @@ const projectsData = [
       "This portfolio serves as a snapshot of my journey as a developer, showcasing a diverse range of projects that I've undertaken. Each project is a testament to my adaptability and dedication to learn and mastering new technologies. Whether it's creating responsive web designs, developing interactive mobile apps, or implementing frontend and backend solutions.",
     image: "/images/projects/portfolioia.png",
     tag: ["All", "Web"],
-    gitUrl: "https://github.com/Javierdigital85/portfolioNextjs",
+    gitUrl: "https://github.com/javiercolodro/portfolioNextjs",
     previewUrl:
-      "https://github.com/Javierdigital85/portfolioNextjs/tree/main/portfolio-website/app/api/send",
+      "https://github.com/javiercolodro/portfolioNextjs/tree/main/portfolio-website/app/api/send",
     web: "https://lorenzojaviercolodro.vercel.app/",
   },
   {
@@ -58,8 +59,8 @@ const projectsData = [
       "This is a to-do-app using the PERN stack.It also has a user registration and once registered you have to login to use the app.You can store many duties as you want and plans for your weekend and month.What I like about this project is that I have leart to implement testing.In the backend there are Unit Tests made with Jest and Integration testing with Supertest and Jest.For the frontend I worked with Cypress to do a E2E testing and try out every functionality for many users at the same time and works amazingly",
     image: "/images/projects/doalist.png",
     tag: ["All", "Web"],
-    gitUrl: "https://github.com/Javierdigital85/Front-ToDoApp",
-    previewUrl: "https://github.com/Javierdigital85/Back-ToDoApp-",
+    gitUrl: "https://github.com/javiercolodro/Front-ToDoApp",
+    previewUrl: "https://github.com/javiercolodro/Back-ToDoApp-",
     web: "https://front-todoapp.onrender.com",
   },
   {
@@ -70,9 +71,9 @@ const projectsData = [
     image: "/images/projects/videos.png",
     tag: ["All", "Web"],
     gitUrl:
-      "https://github.com/Javierdigital85/front-videos-reactvite-typescript-tailwind",
+      "https://github.com/javiercolodro/front-videos-reactvite-typescript-tailwind",
     previewUrl:
-      "https://github.com/Javierdigital85/back-videos-node-postgres-typescript",
+      "https://github.com/javiercolodro/back-videos-node-postgres-typescript",
     web: "https://front-videos-reactvite-typescript.onrender.com",
   },
   // comunidad Perros & Gatos
@@ -108,19 +109,19 @@ const projectsData = [
       "This is a pokemon game where you have to guess the pokemon by their image.The appication was developed with VUE.JS Traditional: Options API.",
     image: "/images/projects/charmanderOff.png",
     tag: ["All", "Web", "Mobile"],
-    gitUrl: "https://github.com/Javierdigital85/vue-pokemon-game",
-    previewUrl: "https://github.com/Javierdigital85/vue-pokemon-game",
+    gitUrl: "https://github.com/javiercolodro/vue-pokemon-game",
+    previewUrl: "https://github.com/javiercolodro/vue-pokemon-game",
     web: "https://vue-pokemon-game-selection.netlify.app/",
   },
   {
-    id: 9,
+    id: 13,
     title: "Music Ecommerce instruments",
     description:
       "This is a fullstack e-commerce application built with a modern stack: Node.js (Express) for the backend, React 19 with Vite and Tailwind CSS for the frontend, and PostgreSQL for data storage. The platform features user authentication, product management, shopping cart functionality, order processing, and secure payment integration with MercadoPago. It also includes a Large Language Model (LLM)-powered chatbot for enhanced customer support and product search. The project leverages TypeScript, DaisyUI, and cloud services for media management, providing a scalable and responsive shopping experience.",
     image: "/images/projects/musicEcommerce.png",
     tag: ["All", "Web"],
-    gitUrl: "https://github.dev/Javierdigital85/Frontend-ecommerce",
-    previewUrl: "https://github.dev/Javierdigital85/Backend-ecommerce",
+    gitUrl: "https://github.com/javiercolodro/Frontend-ecommerce",
+    previewUrl: "https://github.com/javiercolodro/Backend-ecommerce",
     web: "https://frontend-ecommerce-h7j0.onrender.com",
   },
   {
@@ -129,9 +130,10 @@ const projectsData = [
     description:
       "A serverless pizza-ordering backend built with AWS CDK in TypeScript. It exposes a REST API to create and retrieve orders, processing them asynchronously through an event-driven pipeline using API Gateway, Lambda, DynamoDB, and SQS. Orders flow through queues and streams to be prepared and dispatched automatically.",
     image: "/images/projects/aws-cdk-pizza.png",
+    imageFit: "contain",
     tag: ["All", "AWS Serverless"],
     gitUrl: "",
-    previewUrl: "https://github.com/Javierdigital85/pizzeria-aws-cdk",
+    previewUrl: "https://github.com/javiercolodro/pizzeria-aws-cdk",
     web: "",
   },
   {
@@ -140,6 +142,7 @@ const projectsData = [
     description:
       "A serverless AWS CDK project (TypeScript) that automates destination creation for a travel platform using AI workflows orchestrated with Step Functions. An admin uploads an image and an EXPRESS state machine calls OpenAI via a native HTTP Task to autocomplete the form fields for human review. Once confirmed, a fire-and-forget STANDARD machine uses Amazon Bedrock (Claude Haiku) to write a promotional email and sends it to subscribers via SNS. It relies on direct SDK integrations with Retry/Catch (no glue Lambdas), API Gateway secured with an API key, and CloudWatch dashboards, deployed via GitHub Actions with OIDC.",
     image: "/images/projects/diagrama-workflows.png",
+    imageFit: "contain",
     tag: ["All", "AWS Serverless"],
     gitUrl: "",
     previewUrl: "https://github.com/javiercolodro/stepfunctions-destination-ai",
@@ -154,12 +157,14 @@ const projectsData = [
       "This is a fullstack travel e-commerce application built with React, AWS CDK, and serverless technologies. It features user authentication with Cognito, product and booking management, a personalized travel experience, shopping cart functionality, and a modern, responsive design.",
     image: "/images/projects/travelWorldPicture.png",
     tag: ["All", "Web", "Mobile", "AWS Serverless"],
-    gitUrl: "https://github.com/Javierdigital85/front-webapp",
-    previewUrl: "https://github.com/Javierdigital85/infra-webapp",
+    gitUrl: "https://github.com/javiercolodro/front-webapp",
+    previewUrl: "https://github.com/javiercolodro/infra-webapp",
     web: "",
     inDevelopment: true,
   },
 ];
+
+const TAGS = ["All", "Web", "Mobile", "AWS Serverless"];
 
 const ProjectsSection = () => {
   const [tag, setTag] = useState("All");
@@ -173,47 +178,39 @@ const ProjectsSection = () => {
   );
 
   return (
-    <section className="py-6">
-      <div className="flex justify-center mt-10 mb-6 md:mb-8">
-        <div className="inline-block">
-          <h2
-            id="projects"
-            className="text-center text-4xl font-bold text-white"
-          >
-            My Projects
-          </h2>
-          <div className="h-1 bg-blue-500 rounded mt-2" />
-        </div>
-      </div>
-      <div className="text-white flex flex-row justify-center items-center gap-2 py-6">
-        <ProjectTag
-          onClick={handleTagChange}
-          name="All"
-          isSelected={tag === "All"}
-        />
-        <ProjectTag
-          onClick={handleTagChange}
-          name="Web"
-          isSelected={tag === "Web"}
-        />
-        <ProjectTag
-          onClick={handleTagChange}
-          name="Mobile"
-          isSelected={tag === "Mobile"}
-        />
-        <ProjectTag
-          onClick={handleTagChange}
-          name="AWS Serverless"
-          isSelected={tag === "AWS Serverless"}
+    <section id="projects" className="scroll-mt-24 py-20 sm:py-28 lg:py-32">
+      {/* Encabezado de sección */}
+      <div className="mb-12">
+        <SectionHeading
+          label="Portfolio"
+          title="Projects I've"
+          highlight="shipped"
+          description="Full stack applications, team collaborations and AWS serverless architectures."
         />
       </div>
-      <ul
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4"
+
+      {/* Filtros */}
+      <div
+        role="group"
+        aria-label="Filter projects by category"
+        className="mb-12 flex flex-wrap items-center justify-center gap-3"
       >
-        {filteredProjects.map((project, index) => (
-          <li key={index}>
+        {TAGS.map((name) => (
+          <ProjectTag
+            key={name}
+            onClick={handleTagChange}
+            name={name}
+            isSelected={tag === name}
+            count={projectsData.filter((p) => p.tag.includes(name)).length}
+          />
+        ))}
+      </div>
+
+      {/* Grilla */}
+      <ul className="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3 xl:gap-9">
+        {filteredProjects.map((project) => (
+          <li key={project.id}>
             <ProjectsCard
-              key={project.id}
               imgUrl={project.image}
               title={project.title}
               description={project.description}
@@ -222,6 +219,7 @@ const ProjectsSection = () => {
               web={project.web}
               inDevelopment={project.inDevelopment}
               tag={project.tag}
+              imageFit={project.imageFit}
             />
           </li>
         ))}

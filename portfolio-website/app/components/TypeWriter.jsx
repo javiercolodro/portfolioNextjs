@@ -4,31 +4,27 @@ import { TypeAnimation } from "react-type-animation";
 
 const TypeWriter = () => {
   return (
-    <div
-      className="w-full min-h-[2.5em]"
+    <TypeAnimation
+      // Las tres frases tienen ~22 caracteres para que ninguna corte de línea
+      // ni cambie el alto del bloque al rotar.
+      sequence={[
+        "Lorenzo Javier Colodro",
+        1400,
+        "a Full Stack Developer",
+        1400,
+        "an AWS Cloud Developer",
+        1400,
+      ]}
+      wrapper="span"
+      speed={50}
+      repeat={Infinity}
+      className="text-white"
       style={{
-        position: "relative",
+        display: "inline-block",
+        lineHeight: "1.2",
+        overflowWrap: "break-word",
       }}
-    >
-      <TypeAnimation
-        sequence={[
-          "Lorenzo Javier Colodro",
-          1000,
-          "a Full Stack Developer",
-          1000,
-        ]}
-        wrapper="div"
-        speed={50}
-        repeat={Infinity}
-        style={{
-          width: "100%",
-          overflowWrap: "break-word",
-          hyphens: "auto",
-          lineHeight: "1.2",
-          display: "block",
-        }}
-      />
-    </div>
+    />
   );
 };
 
