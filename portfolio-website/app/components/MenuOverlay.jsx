@@ -39,7 +39,8 @@ const MenuOverlay = ({
         })}
       </ul>
 
-      {/* Descarga de CV: en mobile mostramos los dos idiomas directamente */}
+      {/* Descarga de CV: en mobile mostramos los dos idiomas directamente
+          OCULTO TEMPORALMENTE (descomentar para volver a mostrarlo)
       {resumes.length > 0 && (
         <div className="px-8 pb-5">
           <p className="mb-2.5 text-xs font-semibold uppercase tracking-widest text-slate-500">
@@ -59,6 +60,7 @@ const MenuOverlay = ({
           </div>
         </div>
       )}
+      */}
 
       <div className="flex items-center gap-2 px-8 pb-6">
         {socials.map((social) => (

@@ -182,7 +182,8 @@ const Navbar = () => {
             </a>
           ))}
 
-          {/* Descarga de CV con selección de idioma */}
+          {/* Descarga de CV con selección de idioma — OCULTO TEMPORALMENTE
+              (descomentar este bloque para volver a mostrar el botón "Resume")
           <div ref={resumeRef} className="relative ml-2">
             <button
               type="button"
@@ -224,6 +225,7 @@ const Navbar = () => {
               </div>
             )}
           </div>
+          */}
         </div>
 
         {/* Botón del menú mobile */}
@@ -246,7 +248,7 @@ const Navbar = () => {
         <MenuOverlay
           links={navLinks}
           socials={SOCIALS}
-          resumes={RESUMES}
+          // resumes={RESUMES} // OCULTO TEMPORALMENTE: descarga de CV en mobile
           activeSection={activeSection}
           onLinkClick={() => setNavbar(false)}
         />

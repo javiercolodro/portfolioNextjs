@@ -74,7 +74,7 @@ const Header = () => {
             </Link>
           </div>
 
-          {/* Descarga de CV */}
+          {/* Descarga de CV — OCULTO TEMPORALMENTE (descomentar para volver a mostrarlo)
           <div className="mt-5 flex flex-wrap items-center justify-center lg:justify-start gap-x-5 gap-y-2 text-sm">
             <span className="text-muted">Resume:</span>
             <a
@@ -110,6 +110,7 @@ const Header = () => {
               Spanish
             </a>
           </div>
+          */}
         </div>
 
         {/* Foto de perfil */}
