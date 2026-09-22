@@ -10,9 +10,9 @@ const TypeWriter = () => {
       sequence={[
         "Lorenzo Javier Colodro",
         1400,
-        "a Full Stack Developer",
+        "a Full Stack Engineer",
         1400,
-        "an AWS Cloud Developer",
+        "an AWS Cloud Engineer",
         1400,
       ]}
       wrapper="span"
