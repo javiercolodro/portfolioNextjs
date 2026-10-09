@@ -15,6 +15,7 @@ const projectsData = [
     gitUrl: "https://github.com/javiercolodro/tmdb/tree/main/src",
     previewUrl: "https://github.com/javiercolodro/tmdb/tree/main/api",
     web: "https://tmdb-app-gfkr.onrender.com/",
+    visible: true,
   },
   {
     id: 2,
@@ -28,6 +29,7 @@ const projectsData = [
       "https://github.com/hernanortiz18/houseOfDev-src/tree/develop/Front",
     previewUrl: "https://github.com/javiercolodro/houseOfDev",
     web: "",
+    visible: false,
   },
   {
     id: 3,
@@ -39,6 +41,7 @@ const projectsData = [
     gitUrl: "https://github.com/javiertrombetta/p5-box-front",
     previewUrl: "https://github.com/javiertrombetta/p5-box-back",
     web: "",
+    visible: false,
   },
   {
     id: 4,
@@ -51,6 +54,7 @@ const projectsData = [
     previewUrl:
       "https://github.com/javiercolodro/portfolioNextjs/tree/main/portfolio-website/app/api/send",
     web: "https://lorenzojaviercolodro.vercel.app/",
+    visible: false,
   },
   {
     id: 5,
@@ -62,6 +66,7 @@ const projectsData = [
     gitUrl: "https://github.com/javiercolodro/Front-ToDoApp",
     previewUrl: "https://github.com/javiercolodro/Back-ToDoApp-",
     web: "https://front-todoapp.onrender.com",
+    visible: true,
   },
   {
     id: 6,
@@ -75,6 +80,7 @@ const projectsData = [
     previewUrl:
       "https://github.com/javiercolodro/back-videos-node-postgres-typescript",
     web: "https://front-videos-reactvite-typescript.onrender.com",
+    visible: true,
   },
   // comunidad Perros & Gatos
   {
@@ -89,6 +95,7 @@ const projectsData = [
     previewUrl:
       "https://github.com/No-Country-simulation/c21-18-m-node-react/tree/develop/backend",
     web: "",
+    visible: false,
   },
   {
     id: 8,
@@ -101,6 +108,7 @@ const projectsData = [
       "https://github.com/No-Country-simulation/h3-03-klowhub/tree/main/frontend",
     previewUrl:
       "https://github.com/No-Country-simulation/h3-03-klowhub/tree/main/backend",
+    visible: false,
   },
   {
     id: 9,
@@ -112,6 +120,7 @@ const projectsData = [
     gitUrl: "https://github.com/javiercolodro/vue-pokemon-game",
     previewUrl: "https://github.com/javiercolodro/vue-pokemon-game",
     web: "https://vue-pokemon-game-selection.netlify.app/",
+    visible: true,
   },
   {
     id: 13,
@@ -123,6 +132,7 @@ const projectsData = [
     gitUrl: "https://github.com/javiercolodro/Frontend-ecommerce",
     previewUrl: "https://github.com/javiercolodro/Backend-ecommerce",
     web: "https://frontend-ecommerce-h7j0.onrender.com",
+    visible: true,
   },
   {
     id: 10,
@@ -135,6 +145,7 @@ const projectsData = [
     gitUrl: "",
     previewUrl: "https://github.com/javiercolodro/pizzeria-aws-cdk",
     web: "",
+    visible: true,
   },
   {
     id: 11,
@@ -147,6 +158,7 @@ const projectsData = [
     gitUrl: "",
     previewUrl: "https://github.com/javiercolodro/stepfunctions-destination-ai",
     web: "",
+    visible: true,
   },
   {
     id: 12,
@@ -159,8 +171,9 @@ const projectsData = [
     tag: ["All", "Web", "Mobile", "AWS Serverless"],
     gitUrl: "https://github.com/javiercolodro/front-webapp",
     previewUrl: "https://github.com/javiercolodro/infra-webapp",
-    web: "",
-    inDevelopment: true,
+    web: "https://main.d35y8k3tg8tozh.amplifyapp.com/",
+    inDevelopment: false,
+    visible: true,
   },
 ];
 
@@ -173,9 +186,9 @@ const ProjectsSection = () => {
     setTag(newTag);
   };
 
-  const filteredProjects = projectsData.filter((project) =>
-    project.tag.includes(tag),
-  );
+  const filteredProjects = projectsData
+    .filter((project) => project.visible) // Solo proyectos visibles
+    .filter((project) => project.tag.includes(tag)); // Filtro por tag
 
   return (
     <section id="projects" className="scroll-mt-24 py-20 sm:py-28 lg:py-32">
@@ -201,7 +214,7 @@ const ProjectsSection = () => {
             onClick={handleTagChange}
             name={name}
             isSelected={tag === name}
-            count={projectsData.filter((p) => p.tag.includes(name)).length}
+            count={projectsData.filter((p) => p.visible && p.tag.includes(name)).length}
           />
         ))}
       </div>
