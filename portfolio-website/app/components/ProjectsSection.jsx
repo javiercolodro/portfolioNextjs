@@ -131,7 +131,7 @@ const projectsData = [
     tag: ["All", "Web"],
     gitUrl: "https://github.com/javiercolodro/Frontend-ecommerce",
     previewUrl: "https://github.com/javiercolodro/Backend-ecommerce",
-    web: "ecommerce-mercado-libre-front.vercel.app",
+    web: "https://ecommerce-mercado-libre-front.vercel.app/",
     visible: true,
   },
   {
@@ -163,10 +163,7 @@ const projectsData = [
   {
     id: 12,
     title: "Travel World",
-    description:
-
-    
-      "This is a fullstack travel e-commerce application built with React, AWS CDK, and serverless technologies. It features user authentication with Cognito, product and booking management, a personalized travel experience, shopping cart functionality, and a modern, responsive design.",
+    description:"This is a fullstack travel e-commerce application built with React, AWS CDK, and serverless technologies. It features user authentication with Cognito, product and booking management, a personalized travel experience, shopping cart functionality, and a modern, responsive design.",
     image: "/images/projects/travelWorldPicture.png",
     tag: ["All", "Web", "Mobile", "AWS Serverless"],
     gitUrl: "https://github.com/javiercolodro/front-webapp",
