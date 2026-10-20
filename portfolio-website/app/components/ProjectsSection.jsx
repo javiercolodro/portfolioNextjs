@@ -131,7 +131,7 @@ const projectsData = [
     tag: ["All", "Web"],
     gitUrl: "https://github.com/javiercolodro/Frontend-ecommerce",
     previewUrl: "https://github.com/javiercolodro/Backend-ecommerce",
-    web: "https://frontend-ecommerce-h7j0.onrender.com",
+    web: "ecommerce-mercado-libre-front.vercel.app",
     visible: true,
   },
   {
