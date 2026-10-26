@@ -14,7 +14,7 @@ const projectsData = [
     tag: ["All", "Web"],
     gitUrl: "https://github.com/javiercolodro/tmdb/tree/main/src",
     previewUrl: "https://github.com/javiercolodro/tmdb/tree/main/api",
-    web: "https://tmdb-app-gfkr.onrender.com/",
+    web: "https://tmdb-app.fly.dev",
     visible: true,
   },
   {
