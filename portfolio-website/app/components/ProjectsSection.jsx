@@ -14,9 +14,22 @@ const projectsData = [
     tag: ["All", "Web"],
     gitUrl: "https://github.com/javiercolodro/tmdb/tree/main/src",
     previewUrl: "https://github.com/javiercolodro/tmdb/tree/main/api",
-    web: "https://tmdb-app.fly.dev",
+    web: "https://tmdb-five-fawn.vercel.app",
     visible: true,
   },
+  {
+    id: 13,
+    title: "Blackjack",
+    description:
+      "A simple Blackjack game built with vanilla JavaScript, HTML, and CSS. Practice project to learn DOM manipulation, event handling, and game state management. Features include card drawing with random values, a chip system with rewards and penalties, a lives system with hearts, and Insert Coin / Reset mechanics with button state management based on game state.",
+    image: "/images/projects/table.png",
+    tag: ["All", "Web"],
+    gitUrl: "",
+    previewUrl: "https://github.com/javiercolodro/blackjack-game",
+    web: "https://luminous-travesseiro-4061d7.netlify.app/",
+    visible: true,
+  },
+
   {
     id: 2,
     title: "House of Dev",
@@ -123,7 +136,7 @@ const projectsData = [
     visible: true,
   },
   {
-    id: 13,
+    id: 14,
     title: "Music Ecommerce instruments",
     description:
       "This is a fullstack e-commerce application built with a modern stack: Node.js (Express) for the backend, React 19 with Vite and Tailwind CSS for the frontend, and PostgreSQL for data storage. The platform features user authentication, product management, shopping cart functionality, order processing, and secure payment integration with MercadoPago. It also includes a Large Language Model (LLM)-powered chatbot for enhanced customer support and product search. The project leverages TypeScript, DaisyUI, and cloud services for media management, providing a scalable and responsive shopping experience.",
@@ -163,7 +176,8 @@ const projectsData = [
   {
     id: 12,
     title: "Travel World",
-    description:"This is a fullstack travel e-commerce application built with React, AWS CDK, and serverless technologies. It features user authentication with Cognito, product and booking management, a personalized travel experience, shopping cart functionality, and a modern, responsive design.",
+    description:
+      "This is a fullstack travel e-commerce application built with React, AWS CDK, and serverless technologies. It features user authentication with Cognito, product and booking management, a personalized travel experience, shopping cart functionality, and a modern, responsive design.",
     image: "/images/projects/travelWorldPicture.png",
     tag: ["All", "Web", "Mobile", "AWS Serverless"],
     gitUrl: "https://github.com/javiercolodro/front-webapp",
@@ -211,7 +225,10 @@ const ProjectsSection = () => {
             onClick={handleTagChange}
             name={name}
             isSelected={tag === name}
-            count={projectsData.filter((p) => p.visible && p.tag.includes(name)).length}
+            count={
+              projectsData.filter((p) => p.visible && p.tag.includes(name))
+                .length
+            }
           />
         ))}
       </div>
