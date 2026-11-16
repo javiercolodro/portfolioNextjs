@@ -75,20 +75,58 @@ const STATS = [
 ];
 
 const EDUCATION = [
+  { title: "desplegando.cloud · AWS Community", sub: "REST Web Applications with Serverless Architecture" },
   {
     title: "Plataforma 5 Coding Bootcamp",
     sub: "Full Stack JavaScript Developer",
   },
-  { title: "Cabin Crew Certification", sub: "Qatar Airways" },
+  { title: "Scrimba", sub: "Learn JavaScript" },
+  { title: "Cabin Crew", sub: "Qatar Airways" },
 ];
 
-const CERTIFICATIONS = [
-  { text: "Programación Web FullStack", highlight: false },
-  { text: "JavaScript Bootcamp", highlight: false },
-  { text: "Backend Developer Certification — No Country", highlight: false },
-  { text: "Winner Hackathon — Backend Developer, No Country", highlight: true },
-  { text: "Proof of Soft Skills — No Country", highlight: false },
-  { text: "Service Excellence Program (SEP) — Qatar Airways", highlight: false },
+const CERTIFICATES = [
+  {
+    title: "REST Web Applications with Serverless Architecture",
+    issuer: "desplegando.cloud",
+    file: "/images/certificates/aws-serverless-certification.pdf",
+    highlight: false,
+  },
+  {
+    title: "LEARN JAVASCRIPT",
+    issuer: "Scrimba",
+    file: "/images/certificates/JavaScript-scrimba.pdf",
+    highlight: false,
+  },
+  {
+    title: "Winner Hackathon — Backend Developer",
+    issuer: "No Country",
+    file: "/images/certificates/hackathon/1753301676208.pdf",
+    highlight: true,
+  },
+  {
+    title: "Proof of Soft Skills",
+    issuer: "No Country",
+    file: "/images/certificates/hackathon/Proof of Soft Skills.pdf",
+    highlight: false,
+  },
+  {
+    title: "Backend Developer Certification",
+    issuer: "No Country",
+    file: "/images/certificates/no-country-certificate/1734851530842.jpeg",
+    highlight: false,
+  },
+  {
+    title: "JavaScript Bootcamp",
+    issuer: "Plataforma 5 Coding Bootcamp",
+    file: "/images/certificates/bootcamp/javascript-bootcamp-certificate.jpeg",
+    highlight: false,
+  },
+  {
+    title: "Programación Web FullStack",
+    issuer: "ITMaster Professional Training",
+    file: "/images/certificates/itmaster/itmaster-certification.jpeg",
+    highlight: false,
+  },
 ];
 
 const SubHeading = ({ children }) => (
@@ -96,6 +134,34 @@ const SubHeading = ({ children }) => (
     <h3 className="text-lg font-semibold text-white">{children}</h3>
     <div className="mt-2 h-0.5 w-10 rounded-full bg-accent" />
   </div>
+);
+
+const CertificateIcon = () => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.6"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className="h-6 w-6"
+    aria-hidden="true"
+  >
+    <circle cx="12" cy="8" r="5" />
+    <path d="M15 12.5L17.5 22 12 19l-5.5 3L9 12.5" />
+  </svg>
+);
+
+const ExternalLinkIcon = () => (
+  <svg
+    viewBox="0 0 20 20"
+    fill="currentColor"
+    className="h-3.5 w-3.5 shrink-0"
+    aria-hidden="true"
+  >
+    <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
+    <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />
+  </svg>
 );
 
 const AboutSection = () => (
@@ -195,61 +261,84 @@ const AboutSection = () => (
       </div>
     </div>
 
-    {/* Formación y certificaciones */}
-    <div className="mt-20 lg:mt-24 grid gap-12 md:grid-cols-2 md:gap-10 lg:gap-14">
-      <div>
-        <SubHeading>Education</SubHeading>
-        <ul className="space-y-4">
-          {EDUCATION.map((item) => (
-            <li
-              key={item.title}
-              className="card border-l-2 border-l-accent p-5 transition-colors duration-200 hover:border-accent/40 hover:border-l-accent"
-            >
-              <p className="font-semibold text-white">{item.title}</p>
-              <p className="mt-1.5 text-sm text-muted">{item.sub}</p>
-            </li>
-          ))}
-        </ul>
-      </div>
+    {/* Formación */}
+    <div className="mt-20 lg:mt-24">
+      <SubHeading>Education</SubHeading>
+      <ul className="space-y-4">
+        {EDUCATION.map((item) => (
+          <li
+            key={item.title}
+            className="card border-l-2 border-l-accent p-5 transition-colors duration-200 hover:border-accent/40 hover:border-l-accent"
+          >
+            <p className="font-semibold text-white">{item.title}</p>
+            <p className="mt-1.5 text-sm text-muted">{item.sub}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
 
-      <div>
-        <SubHeading>Certifications</SubHeading>
-        <ul className="space-y-3">
-          {CERTIFICATIONS.map((cert) => (
-            <li
-              key={cert.text}
-              className={`card flex items-start gap-3 px-5 py-4 ${
-                cert.highlight ? "border-l-2 border-l-amber-400" : ""
+    {/* Certificados con enlace al documento */}
+    <div className="mt-20 lg:mt-24">
+      <SubHeading>Certificates</SubHeading>
+      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {CERTIFICATES.map((cert) => {
+          const inner = (
+            <>
+              <div className="flex items-start gap-4">
+                <span
+                  className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl text-lg ${
+                    cert.highlight
+                      ? "bg-amber-400/15 text-amber-400"
+                      : "bg-accent/15 text-accent-soft"
+                  }`}
+                >
+                  {cert.highlight ? "🏆" : <CertificateIcon />}
+                </span>
+                <div className="min-w-0">
+                  <h4 className="font-semibold leading-snug text-white">
+                    {cert.title}
+                  </h4>
+                  <p className="mt-1 text-sm text-muted">{cert.issuer}</p>
+                </div>
+              </div>
+              {cert.file && (
+                <span
+                  className={`mt-5 inline-flex items-center gap-1.5 text-xs font-semibold transition-colors duration-200 ${
+                    cert.highlight
+                      ? "text-amber-400 group-hover:text-amber-300"
+                      : "text-accent-soft group-hover:text-accent"
+                  }`}
+                >
+                  View certificate
+                  <ExternalLinkIcon />
+                </span>
+              )}
+            </>
+          );
+
+          return cert.file ? (
+            <a
+              key={cert.title}
+              href={cert.file}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`group card flex flex-col p-6 transition-all duration-300 ease-smooth hover:-translate-y-1 hover:shadow-xl hover:shadow-black/40 ${
+                cert.highlight
+                  ? "border-l-2 border-l-amber-400 hover:border-amber-400/60"
+                  : "hover:border-accent/40"
               }`}
             >
-              {cert.highlight ? (
-                <span className="text-sm" aria-hidden="true">
-                  🏆
-                </span>
-              ) : (
-                <svg
-                  className="mt-0.5 h-4 w-4 shrink-0 text-accent-soft"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                  aria-hidden="true"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-              )}
-              <p
-                className={`text-sm ${
-                  cert.highlight ? "font-medium text-white" : "text-muted"
-                }`}
-              >
-                {cert.text}
-              </p>
-            </li>
-          ))}
-        </ul>
+              {inner}
+            </a>
+          ) : (
+            <div
+              key={cert.title}
+              className="card flex flex-col p-6"
+            >
+              {inner}
+            </div>
+          );
+        })}
       </div>
     </div>
   </section>
